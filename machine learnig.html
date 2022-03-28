@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="brain-browser.js"></script>
+    <!-- <script src="script.js"></script> -->
+</head>
+<body>
+    <script>
+        window.onload = iniciar;
+
+function iniciar() {
+    const redNeuronal = new brain.NeuralNetwork();
+
+    const datos = [{
+        "input": {
+            "R": 0.78,
+            "G": 0.9,
+            "B": 1
+        }, //celeste claro
+        "output": {
+            "claro": 1
+        }
+    }, {
+        "input": {
+            "R": 0,
+            "G": 0.11,
+            "B": 0.2
+        }, //Azul oscuro
+        "output": {
+            "oscuro": 1
+        }
+    }, {
+        "input": {
+            "R": 0.1,
+            "G": 0.2,
+            "B": 0.3
+        }, //celeste claro
+        "output": {
+            "oscuro": 1
+        }
+    }, {
+        "input": {
+            "R": 0.74,
+            "G": 0.78,
+            "B": 0.86
+        }, //Azul oscuro
+        "output": {
+            "claro": 1
+        }
+    }];
+    // Entrena la IA
+    redNeuronal.train(datos);
+
+    //    verde claro
+    let resultado = brain.likely({
+        "R": 0.57,
+        "G": 0.98,
+        "B": 0.61
+    }, redNeuronal);
+    alert(resultado);
+
+
+    //    rojo oscuro
+    resultado = brain.likely({
+        "R": 0.29,
+        "R": 0.007,
+        "R": 0.007
+    }, redNeuronal);
+    alert(resultado);
+}
+    </script>
+</body>
+</html>
